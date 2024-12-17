@@ -1,0 +1,12 @@
+ECO,name,moves
+B70,"Dragon Variation, Sicilian; B70",e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 g6
+B74,"Alekhine Line, Sicilian Dragon",e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 g6 Be3 Bg7 Be2 Nc6 O-O O-O Nb3 a5
+B74,"Maroczy Line, Sicilian Dragon",e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 g6 Be3 Bg7 Be2 Nc6 O-O O-O Nb3 Be6 f4 Na5
+B74,"Tartakower Line, Sicilian Dragon",e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 g6 Be3 Bg7 Be2 Nc6 O-O O-O Nb3 Be6 f4 Qc8
+B76,"Yugoslav Attack, Sicilian Dragon; B76",e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 g6 Be3 Bg7 f3 O-O
+B77,"Sosonko Variation, Sicilian Dragon",e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 g6 Be3 Bg7 f3 O-O Qd2 Nc6 Bc4 Nd7
+B77,"Czerniak Variation, Sicilian Dragon",e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 g6 Be3 Bg7 f3 O-O Qd2 Nc6 Bc4 Nxd4 Bxe4
+B76,"Panov Variation, Sicilian Dragon",e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 g6 Be3 Bg7 f3 O-O Qd2 Nc6 g4
+B70,"Fianchetto Variation, Sicilian Dragon",e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 g6 g3
+C24,"Vienna Hybrid, Bishop",e4 e5 Bc4 Nf6 d3 Nc6 Nc3
+C29,"Vienna Gambit, Vienna; C29",e4 e5 Nc3 Nf6 f4

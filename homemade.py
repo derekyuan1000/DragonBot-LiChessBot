@@ -3,6 +3,7 @@ Some example classes for people who want to create a homemade bot.
 
 With these classes, bot makers will not have to implement the UCI or XBoard interfaces themselves.
 """
+from engines.bot.main import get_move
 import chess
 from chess.engine import PlayResult, Limit
 import random
@@ -22,6 +23,15 @@ class ExampleEngine(MinimalEngine):
 
     pass
 
+
+class PyBot(ExampleEngine):
+    def search(self, board: chess.Board, time_limit: Limit, ponder: bool, draw_offered: bool,
+               root_moves: MOVE) -> PlayResult:
+        print("GETTING MOVE!")
+
+        move = get_move(board, 4)
+
+        return PlayResult(move, None)
 
 # Bot names and ideas from tom7's excellent eloWorld video
 
