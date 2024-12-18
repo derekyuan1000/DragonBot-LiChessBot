@@ -1,11 +1,17 @@
 import chess
 import numpy as np
 
-from .opening import play_opening
-from .minimax import minimax
+from .opening import play_opening  # Adjusted comments to reflect imported behaviors
 
+from .minimax import minimax  # Update to import modified minimax if external file was changed
+
+
+from typing import Tuple, List  # New import to support type annotations
 
 def get_move(board, depth):
+    """
+    Calculates the best move and the principal variation for both sides.
+    """
     opening_move = play_opening(board)
 
     if opening_move:
@@ -24,7 +30,7 @@ def get_move(board, depth):
         board.push(move)
 
         # WHEN WE ARE BLACK, WE WANT TRUE AND TO GRAB THE SMALLEST VALUE
-        eval = minimax(board, depth - 1, -np.inf, np.inf, board.turn)
+        eval, pv = minimax(board, depth - 1, -np.inf, np.inf, board.turn)
 
         board.pop()
 
@@ -38,6 +44,7 @@ def get_move(board, depth):
                 top_eval = eval
 
     print("CHOSEN MOVE (FOR CURRENT SIDE): ", top_move, "WITH EVAL: ", top_eval)
+    print("PRINCIPAL VARIATION (FOR CURRENT SIDE): ", [top_move] + pv)
 
     # Simulate the opponent's perspective
     board.push(top_move)
@@ -46,7 +53,7 @@ def get_move(board, depth):
 
     for move in board.legal_moves:
         board.push(move)
-        eval = minimax(board, depth - 1, -np.inf, np.inf, board.turn)
+        eval, pv = minimax(board, depth - 1, -np.inf, np.inf, board.turn)
         board.pop()
 
         if board.turn == chess.WHITE:
@@ -61,4 +68,5 @@ def get_move(board, depth):
     board.pop()
 
     print("OPPONENT'S PERSPECTIVE (BEST MOVE): ", opponent_best_move, "WITH EVAL: ", opponent_top_eval)
+    print("PRINCIPAL VARIATION (FOR OPPONENT SIDE): ", [opponent_best_move] + pv)
     return top_move
