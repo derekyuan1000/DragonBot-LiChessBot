@@ -2,7 +2,6 @@
 <project version="4">
   <component name="CodebuddyPersistentProjectState">
     <option name="additionalOptionsVisible" value="true" />
-    <option name="autoFileMode" value="CURRENT_OPEN" />
     <option name="autoFileSelection" value="true" />
     <option name="promptHistory">
       <list>
@@ -15,8 +14,9 @@
         <option value="everytime it loops through it adds the bonus, delete it so that it only adds it once" />
         <option value="dont make it so that it adds it every turn only add it once per rock everytime it moves onto a open file from a non open one" />
         <option value="you havent defiend rook_positions also please remove all of the debuging tools" />
+        <option value="add time restrictions onto it to to cap the search time at remaining time/20 + increment/2, after which the search aborts." />
       </list>
     </option>
-    <option name="selectedModel" value="codebuddy:CLAUDE_3.5_SONNET_V7" />
+    <option name="selectedModel" value="codebuddy:GPT4_Turbo_Haiku_V7" />
   </component>
 </project>
