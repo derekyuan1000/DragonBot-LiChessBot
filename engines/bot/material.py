@@ -3,8 +3,8 @@ import chess
 def get_material(board):
     # Weights
     pw = 100
-    kw = 295
-    bw = 345
+    kw = 310
+    bw = 330
     rw = 500
     qw = 900
     kingw = 20000

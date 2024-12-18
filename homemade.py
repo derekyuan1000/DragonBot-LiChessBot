@@ -29,11 +29,10 @@ class PyBot(ExampleEngine):
                root_moves: MOVE) -> PlayResult:
         print("GETTING MOVE!")
 
-        move = get_move(board, 4)
+        move = get_move(board, 5)
 
         return PlayResult(move, None)
 
-# Bot names and ideas from tom7's excellent eloWorld video
 
 class RandomMove(ExampleEngine):
     """Get a random move."""
