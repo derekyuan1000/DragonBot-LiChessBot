@@ -28,6 +28,7 @@ def get_material(board):
         file_mask = chess.BB_FILES[chess.square_file(square)]
         white_pawns = board.pieces(chess.PAWN, chess.WHITE) & file_mask
         black_pawns = board.pieces(chess.PAWN, chess.BLACK) & file_mask
+        print(f"Checking file {chess.square_file(square)}: WP={bool(white_pawns)} BP={bool(black_pawns)}")
         return not (white_pawns or black_pawns)
 
     # Add bonus for rooks on open files
@@ -35,10 +36,12 @@ def get_material(board):
     for square in board.pieces(chess.ROOK, chess.WHITE):
         if is_open_file(square):
             print("WHITE ROOK BONUS")
+            print(f"White rook on square {chess.square_name(square)} gets open file bonus")
             rook_bonus += 35
     for square in board.pieces(chess.ROOK, chess.BLACK):
         if is_open_file(square):
             print("BLACK ROOK BONUS")
+            print(f"Black rook on square {chess.square_name(square)} gets open file bonus")
             rook_bonus -= 35
 
     # White
