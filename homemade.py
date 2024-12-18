@@ -29,7 +29,7 @@ class PyBot(ExampleEngine):
                root_moves: MOVE) -> PlayResult:
         print("GETTING MOVE!")
 
-        move = get_move(board, 5)
+        move = get_move(board, 4)
 
         return PlayResult(move, None)
 
