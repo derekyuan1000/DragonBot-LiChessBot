@@ -9,6 +9,7 @@
         <option value="my program isnt playing moves after the opening" />
         <option value="give rooks a +35 eval for being on open files, i.e. no pawns infront through the whole row, a +15 eval for on semi open files, i.e. no pawn of thir color on the row but their opponent has one" />
         <option value="give rooks a +35 material for being on open files, i.e. no pawns infront through the whole row, a +15 material for on semi open files, i.e. no pawn of thir color on the row but their opponent has one, do this under the part about knight weight going down after enemy pawns are gone and give comments similar to the ones above" />
+        <option value="assign extra weight for rooks on open files, i.e. no pawns of either colour in its row +35 weight" />
       </list>
     </option>
     <option name="selectedModel" value="codebuddy:CLAUDE_3.5_SONNET_V7" />
