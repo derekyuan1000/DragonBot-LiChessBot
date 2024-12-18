@@ -23,32 +23,11 @@ def get_material(board):
     black_queen_count = len(board.pieces(chess.QUEEN, chess.BLACK))
     black_king_count = len(board.pieces(chess.KING, chess.BLACK))
 
-    # Check for rooks on open files
-    def is_open_file(square):
-        file_mask = chess.BB_FILES[chess.square_file(square)]
-        white_pawns = board.pieces(chess.PAWN, chess.WHITE) & file_mask
-        black_pawns = board.pieces(chess.PAWN, chess.BLACK) & file_mask
-        print(f"Checking file {chess.square_file(square)}: WP={bool(white_pawns)} BP={bool(black_pawns)}")
-        return not (white_pawns or black_pawns)
-
-    # Add bonus for rooks on open files
-    rook_bonus = 0
-    for square in board.pieces(chess.ROOK, chess.WHITE):
-        if is_open_file(square):
-            print("WHITE ROOK BONUS")
-            print(f"White rook on square {chess.square_name(square)} gets open file bonus")
-            rook_bonus += 35
-    for square in board.pieces(chess.ROOK, chess.BLACK):
-        if is_open_file(square):
-            print("BLACK ROOK BONUS")
-            print(f"Black rook on square {chess.square_name(square)} gets open file bonus")
-            rook_bonus -= 35
+    rook_bonus = calculate_rook_bonus(board)
 
     # White
     white_pawn_weight = white_pawn_count * pawn_weight
-    # Rook weight increases for less pawns
     white_rook_weight = white_rook_count * rook_weight
-    # Knight weight goes down for each enemy pawn gone (8 pawns)
     white_knight_weight = white_knight_count * knight_weight
     white_bishop_weight = white_bishop_count * bishop_weight
     white_queen_weight = white_queen_count * queen_weight
@@ -56,9 +35,7 @@ def get_material(board):
 
     # Black
     black_pawn_weight = black_pawn_count * pawn_weight
-    # Rook weight increases for less pawns
     black_rook_weight = black_rook_count * rook_weight
-    # Knight weight goes down for each enemy pawn gone (8 pawns)
     black_knight_weight = black_knight_count * knight_weight
     black_bishop_weight = black_bishop_count * bishop_weight
     black_queen_weight = black_queen_count * queen_weight
@@ -70,3 +47,19 @@ def get_material(board):
     total_material = white_material - black_material + rook_bonus
 
     return total_material
+
+def calculate_rook_bonus(board):
+    def is_open_file(square):
+        file_mask = chess.BB_FILES[chess.square_file(square)]
+        white_pawns = board.pieces(chess.PAWN, chess.WHITE) & file_mask
+        black_pawns = board.pieces(chess.PAWN, chess.BLACK) & file_mask
+        return not (white_pawns or black_pawns)
+
+    rook_bonus = 0
+    for square in board.pieces(chess.ROOK, chess.WHITE):
+        if is_open_file(square):
+            rook_bonus += 35
+    for square in board.pieces(chess.ROOK, chess.BLACK):
+        if is_open_file(square):
+            rook_bonus -= 35
+    return rook_bonus
