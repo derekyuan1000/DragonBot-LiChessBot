@@ -1,17 +1,14 @@
 import chess
 import numpy as np
 
-from .opening import play_opening  # Adjusted comments to reflect imported behaviors
+from .opening import play_opening
+from .minimax import minimax
+from chess import Board
 
-from .minimax import minimax  # Update to import modified minimax if external file was changed
-
-
-from typing import Tuple, List  # New import to support type annotations
 
 def get_move(board, depth):
-    """
-    Calculates the best move and the principal variation for both sides.
-    """
+    def minimax(board, depth, alpha, beta, maximizing_player, line):
+        # Added placeholder for adaption to store moves
     opening_move = play_opening(board)
 
     if opening_move:
@@ -29,10 +26,11 @@ def get_move(board, depth):
     for move in board.legal_moves:
         board.push(move)
 
-        # WHEN WE ARE BLACK, WE WANT TRUE AND TO GRAB THE SMALLEST VALUE
-        eval, pv = minimax(board, depth - 1, -np.inf, np.inf, board.turn)
-
+        # Calculate and store the principal variation for the line
+        line = []
+        eval = minimax(board, depth - 1, -np.inf, np.inf, board.turn, line)
         board.pop()
+        print("MOVE:", move, " LINE: ", line, " EVAL: ", eval)
 
         if board.turn == chess.WHITE:
             if eval > top_eval:
@@ -43,30 +41,5 @@ def get_move(board, depth):
                 top_move = move
                 top_eval = eval
 
-    print("CHOSEN MOVE (FOR CURRENT SIDE): ", top_move, "WITH EVAL: ", top_eval)
-    print("PRINCIPAL VARIATION (FOR CURRENT SIDE): ", [top_move] + pv)
-
-    # Simulate the opponent's perspective
-    board.push(top_move)
-    opponent_best_move = None
-    opponent_top_eval = -np.inf if board.turn == chess.WHITE else np.inf
-
-    for move in board.legal_moves:
-        board.push(move)
-        eval, pv = minimax(board, depth - 1, -np.inf, np.inf, board.turn)
-        board.pop()
-
-        if board.turn == chess.WHITE:
-            if eval > opponent_top_eval:
-                opponent_best_move = move
-                opponent_top_eval = eval
-        else:
-            if eval < opponent_top_eval:
-                opponent_best_move = move
-                opponent_top_eval = eval
-
-    board.pop()
-
-    print("OPPONENT'S PERSPECTIVE (BEST MOVE): ", opponent_best_move, "WITH EVAL: ", opponent_top_eval)
-    print("PRINCIPAL VARIATION (FOR OPPONENT SIDE): ", [opponent_best_move] + pv)
+    print("CHOSEN MOVE: ", top_move, "WITH EVAL: ", top_eval)
     return top_move
