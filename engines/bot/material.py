@@ -1,5 +1,8 @@
 import chess
 
+# Global dictionary to track rook positions and their open file status
+rook_positions = {}
+
 def get_material(board):
     # Weights
     pawn_weight = 100
@@ -56,10 +59,19 @@ def calculate_rook_bonus(board):
         return not (white_pawns or black_pawns)
 
     rook_bonus = 0
+    
     for square in board.pieces(chess.ROOK, chess.WHITE):
-        if is_open_file(square):
+        if is_open_file(square) and (square not in rook_positions or not rook_positions[square]):
             rook_bonus += 35
+            rook_positions[square] = True
+        else:
+            rook_positions[square] = False
+
     for square in board.pieces(chess.ROOK, chess.BLACK):
-        if is_open_file(square):
+        if is_open_file(square) and (square not in rook_positions or not rook_positions[square]):
             rook_bonus -= 35
+            rook_positions[square] = True
+        else:
+            rook_positions[square] = False
+
     return rook_bonus
