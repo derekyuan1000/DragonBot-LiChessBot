@@ -3,13 +3,13 @@ url: "https://lichess.org/"        # Lichess base URL.
 
 engine:                            # Engine settings.
   dir: "./engines/"                # Directory containing the engine. This can be an absolute path or one relative to lichess-bot/.
-  name: "PyBot"              # Binary name of the engine to use.
+  name: "./dragon/dragon.exe"              # Binary name of the engine to use.
 # interpreter: "java"
 # interpreter_options:
 #   - "-jar"
   working_dir: ""                  # Directory where the chess engine will read and write files. If blank or missing, the current directory is used.
                                    # NOTE: If working_dir is set, the engine will look for files and directories relative to this directory, not where lichess-bot was launched. Absolute paths are unaffected.
-  protocol: "homemade"                  # "uci", "xboard" or "homemade"
+  protocol: "uci"                  # "uci", "xboard" or "homemade"
   ponder: true                     # Think on opponent's time.
 
   polyglot:
@@ -35,8 +35,8 @@ engine:                            # Engine settings.
     offer_draw_enabled: true       # Whether or not the bot should offer/accept draw.
     offer_draw_score: 0            # If the absolute value of the score is less than or equal to this value, the bot offers/accepts draw (in cp).
     offer_draw_for_egtb_zero: true # If true the bot will offer/accept draw in positions where the online_egtb returns a wdl of 0.
-    offer_draw_moves: 10           # How many moves in a row the absolute value of the score has to be below the draw value.
-    offer_draw_pieces: 10          # Only if the pieces on board are less than or equal to this value, the bot offers/accepts draw.
+    offer_draw_moves: 7           # How many moves in a row the absolute value of the score has to be below the draw value.
+    offer_draw_pieces: 12          # Only if the pieces on board are less than or equal to this value, the bot offers/accepts draw.
 
   online_moves:
     max_out_of_book_moves: 10      # Stop using online opening books after they don't have a move for 'max_out_of_book_moves' positions. Doesn't apply to the online endgame tablebases.
@@ -163,9 +163,9 @@ challenge:                         # Incoming challenges.
 # block_list:                      # List of users from which the challenges are always declined.
 #   - user1
 #   - user2
-# allow_list:                      # List of users from which challenges are exclusively accepted, all others being declined. If empty, challenges from all users may be accepted.
-#   - user3
-#   - user4
+  allow_list:                      # List of users from which challenges are exclusively accepted, all others being declined. If empty, challenges from all users may be accepted.
+    - derekyuan0505
+    - Cubix1729
 # recent_bot_challenge_age: 60     # Maximum age of a bot challenge to be considered recent in seconds
 # max_recent_bot_challenges: 2     # Maximum number of recent challenges that can be accepted from the same bot
   bullet_requires_increment: false # Require that bullet game challenges from bots have a non-zero increment
