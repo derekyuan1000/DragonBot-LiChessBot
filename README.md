@@ -36,4 +36,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 This project is inspired by the lichess-bot project and the lichess.org community.
 
 ## Contact
-Email at derekyuan10000@gmail.com for any requests, bug fixes or Contributions.
+Email at mail@derekyuan.co.uk for any requests, bug fixes or Contributions.
