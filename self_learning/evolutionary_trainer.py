@@ -13,9 +13,15 @@ import json
 import os
 import copy
 from datetime import datetime
+from pathlib import Path  # added
 from engines.bot.main import get_move
-from engines.bot.evaluation import get_evaluation
-import numpy as np
+
+
+# Base directory for all evolution artifacts (now inside self_learning)
+BASE_DIR = Path(__file__).parent
+DATA_DIR = BASE_DIR / "evolution_data"
+GAMES_DIR = BASE_DIR / "evolution_games"
+CHAMPIONS_DIR = BASE_DIR / "evolution_champions"
 
 
 class BotGenome:
@@ -440,10 +446,10 @@ class EvolutionaryTrainer:
         self.best_ever_genome = None
         self.best_ever_fitness = 0.0
 
-        # Create directories
-        os.makedirs("evolution_data", exist_ok=True)
-        os.makedirs("evolution_games", exist_ok=True)
-        os.makedirs("evolution_champions", exist_ok=True)
+        # Create directories (now relative to this module's folder)
+        os.makedirs(DATA_DIR, exist_ok=True)
+        os.makedirs(GAMES_DIR, exist_ok=True)
+        os.makedirs(CHAMPIONS_DIR, exist_ok=True)
 
         # Initialize first generation
         self.create_initial_population()
@@ -616,7 +622,7 @@ class EvolutionaryTrainer:
             'genomes': [genome.to_dict() for genome in self.population]
         }
 
-        filename = f"evolution_data/generation_{self.generation:03d}_{timestamp}.json"
+        filename = DATA_DIR / f"generation_{self.generation:03d}_{timestamp}.json"
         with open(filename, 'w') as f:
             json.dump(population_data, f, indent=2)
 
@@ -630,13 +636,13 @@ class EvolutionaryTrainer:
             self.best_ever_fitness = best_current_gen.fitness
 
         # Always save the best genome from current generation
-        champion_file = f"evolution_champions/champion_gen_{self.generation:03d}.json"
+        champion_file = CHAMPIONS_DIR / f"champion_gen_{self.generation:03d}.json"
         with open(champion_file, 'w') as f:
             json.dump(best_current_gen.to_dict(), f, indent=2)
 
         # Also save the all-time best if different
         if self.best_ever_genome != best_current_gen:
-            best_ever_file = f"evolution_champions/best_ever_gen_{self.generation:03d}.json"
+            best_ever_file = CHAMPIONS_DIR / f"best_ever_gen_{self.generation:03d}.json"
             with open(best_ever_file, 'w') as f:
                 json.dump(self.best_ever_genome.to_dict(), f, indent=2)
 
@@ -703,8 +709,8 @@ def main():
     champion = trainer.run_evolution(max_generations=1)
 
     print("\nEvolution completed!")
-    print("The champion bot has been saved to 'evolution_champions/'")
-    print("Check 'evolution_data/' for detailed evolution history")
+    print("The champion bot has been saved to 'self_learning/evolution_champions/'")
+    print("Check 'self_learning/evolution_data/' for detailed evolution history")
 
 
 if __name__ == "__main__":

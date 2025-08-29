@@ -1,0 +1,42 @@
+{
+  "piece_values": {
+    "pawn": 100,
+    "knight": 310,
+    "bishop": 330,
+    "rook": 500,
+    "queen": 900,
+    "king": 20000
+  },
+  "eval_weights": {
+    "material_weight": 1.0,
+    "position_weight": 0.3,
+    "king_safety_weight": 0.8,
+    "pawn_structure_weight": 0.4,
+    "piece_activity_weight": 0.6,
+    "center_control_weight": 0.5,
+    "development_bonus": 10,
+    "castling_bonus": 20,
+    "doubled_pawn_penalty": 20,
+    "isolated_pawn_penalty": 15,
+    "rook_open_file_bonus": 35
+  },
+  "search_params": {
+    "base_depth": 4,
+    "quiescence_depth": 10,
+    "aggressive_factor": 1.0,
+    "safety_factor": 1.0
+  },
+  "style_params": {
+    "randomness_opening": 0.1,
+    "randomness_middlegame": 0.05,
+    "randomness_endgame": 0.02,
+    "risk_tolerance": 0.5
+  },
+  "fitness": 0.0,
+  "games_played": 0,
+  "wins": 0,
+  "draws": 0,
+  "losses": 0,
+  "generation": 0,
+  "parent_ids": []
+}
