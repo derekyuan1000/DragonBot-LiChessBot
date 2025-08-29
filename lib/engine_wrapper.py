@@ -108,7 +108,24 @@ class EngineWrapper:
         """
         try:
             extra_options = {} if game is None else game_specific_options(game)
-            self.engine.configure(cast(OPTIONS_TYPE, options | extra_options))
+
+            # Filter out "Move Overhead" for engines that don't support it (like Dragon engine)
+            # Dragon engine uses "Overhead ms" instead
+            filtered_options = {}
+            for key, value in (options | extra_options).items():
+                if key == "Move Overhead":
+                    # Check if engine supports this option by looking at available options
+                    try:
+                        if "Move Overhead" not in [opt.lower() for opt in self.engine.options.keys()]:
+                            logger.debug(f"Skipping unsupported option 'Move Overhead' for this engine")
+                            continue
+                    except:
+                        # If we can't check, skip the option to be safe
+                        logger.debug(f"Skipping 'Move Overhead' option due to engine compatibility")
+                        continue
+                filtered_options[key] = value
+
+            self.engine.configure(cast(OPTIONS_TYPE, filtered_options))
         except Exception:
             self.engine.close()
             raise
@@ -1345,13 +1362,13 @@ def piecewise_function(range_definitions: list[tuple[Union[int, float], Literal[
     Arguments:
     range_definitions:
         A list of tuples with the first element being the inclusive right border of region and the second
-        element being the associated value. An element of this list (a, 'i', b) corresponds to an
+        element being the associated value. An element of this form (a, 'e', b) corresponds to an
+        exclusive limit and is equivalent to
+            if x < a:
+                return b
+        where x is the value of the position argument. An element of the form (a, 'i', b) corresponds to an
         inclusive limit and is equivalent to
             if x <= a:
-                return b
-        where x is the value of the position argument. An element of the form (a, 'e', b) corresponds to
-        an exclusive limit and is equivalent to
-            if x < a:
                 return b
         For correct operation, this argument should be sorted by the first element. If two ranges have the
         same border, one with 'e' and the other with 'i', the 'e' element should be first.

@@ -72,78 +72,256 @@ class BotGenome:
         self.generation = 0
         self.parent_ids = []
 
-    def mutate(self, mutation_rate=0.1, mutation_strength=0.2):
-        """Create a mutated copy of this genome"""
+    def mutate(self, mutation_rate=0.4, mutation_strength=0.6):
+        """Create a mutated copy of this genome with DRAMATIC mutations"""
         new_genome = copy.deepcopy(self)
 
-        # Mutate piece values
+        # Add chance for RADICAL mutations (complete parameter overhauls)
+        radical_mutation_chance = 0.15
+
+        # DRAMATIC piece value mutations
         for piece in new_genome.piece_values:
             if random.random() < mutation_rate:
                 if piece == 'king':
                     continue  # Don't mutate king value
                 current_value = new_genome.piece_values[piece]
-                change = random.uniform(-mutation_strength, mutation_strength)
-                new_genome.piece_values[piece] = max(10, int(current_value * (1 + change)))
 
-        # Mutate evaluation weights
+                # 30% chance for RADICAL mutation (complete value replacement)
+                if random.random() < 0.3:
+                    # Replace with completely new value based on piece type
+                    if piece == 'pawn':
+                        new_genome.piece_values[piece] = random.randint(50, 200)
+                    elif piece == 'knight':
+                        new_genome.piece_values[piece] = random.randint(200, 500)
+                    elif piece == 'bishop':
+                        new_genome.piece_values[piece] = random.randint(200, 500)
+                    elif piece == 'rook':
+                        new_genome.piece_values[piece] = random.randint(300, 700)
+                    elif piece == 'queen':
+                        new_genome.piece_values[piece] = random.randint(600, 1200)
+                else:
+                    # Standard dramatic mutation (much larger changes)
+                    change = random.uniform(-mutation_strength, mutation_strength)
+                    new_genome.piece_values[piece] = max(10, int(current_value * (1 + change)))
+
+        # DRAMATIC evaluation weight mutations
         for param in new_genome.eval_weights:
             if random.random() < mutation_rate:
                 current_value = new_genome.eval_weights[param]
-                change = random.uniform(-mutation_strength, mutation_strength)
-                new_genome.eval_weights[param] = max(0.01, current_value * (1 + change))
 
-        # Mutate search parameters
+                # 25% chance for RADICAL mutation
+                if random.random() < 0.25:
+                    # Complete replacement with random value
+                    if 'weight' in param:
+                        new_genome.eval_weights[param] = random.uniform(0.1, 3.0)
+                    elif 'bonus' in param:
+                        new_genome.eval_weights[param] = random.randint(5, 50)
+                    elif 'penalty' in param:
+                        new_genome.eval_weights[param] = random.randint(5, 50)
+                    else:
+                        new_genome.eval_weights[param] = random.uniform(0.1, 2.0)
+                else:
+                    # Dramatic standard mutation
+                    change = random.uniform(-mutation_strength, mutation_strength)
+                    new_genome.eval_weights[param] = max(0.01, current_value * (1 + change))
+
+        # DRAMATIC search parameter mutations
+        if random.random() < mutation_rate * 1.5:  # Higher chance for search params
+            # Dramatic depth changes
+            if random.random() < 0.3:
+                new_genome.search_params['base_depth'] = random.choice([2, 3, 4, 5, 6])
+            else:
+                new_genome.search_params['base_depth'] = max(2, min(6,
+                    new_genome.search_params['base_depth'] + random.choice([-2, -1, 0, 1, 2])))
+
+        # Dramatic quiescence depth mutations
         if random.random() < mutation_rate:
-            new_genome.search_params['base_depth'] = max(2, min(6,
-                new_genome.search_params['base_depth'] + random.choice([-1, 0, 1])))
+            if random.random() < 0.2:
+                new_genome.search_params['quiescence_depth'] = random.randint(5, 20)
+            else:
+                change = random.uniform(-0.5, 0.5)
+                new_genome.search_params['quiescence_depth'] = max(3, min(20,
+                    int(new_genome.search_params['quiescence_depth'] * (1 + change))))
 
         for param in ['aggressive_factor', 'safety_factor']:
             if random.random() < mutation_rate:
                 current_value = new_genome.search_params[param]
-                change = random.uniform(-mutation_strength, mutation_strength)
-                new_genome.search_params[param] = max(0.1, min(2.0, current_value * (1 + change)))
 
-        # Mutate style parameters
+                # 20% chance for extreme personality shift
+                if random.random() < 0.2:
+                    if param == 'aggressive_factor':
+                        new_genome.search_params[param] = random.uniform(0.2, 3.0)
+                    else:  # safety_factor
+                        new_genome.search_params[param] = random.uniform(0.2, 3.0)
+                else:
+                    # Dramatic standard mutation
+                    change = random.uniform(-mutation_strength, mutation_strength)
+                    new_genome.search_params[param] = max(0.1, min(3.0, current_value * (1 + change)))
+
+        # DRAMATIC style parameter mutations (personality shifts)
         for param in new_genome.style_params:
-            if random.random() < mutation_rate:
+            if random.random() < mutation_rate * 1.2:  # Higher chance for style changes
                 if 'randomness' in param:
-                    current_value = new_genome.style_params[param]
-                    change = random.uniform(-mutation_strength, mutation_strength)
-                    new_genome.style_params[param] = max(0.0, min(1.0, current_value * (1 + change)))
+                    # 25% chance for complete randomness overhaul
+                    if random.random() < 0.25:
+                        new_genome.style_params[param] = random.uniform(0.0, 0.8)
+                    else:
+                        current_value = new_genome.style_params[param]
+                        change = random.uniform(-mutation_strength, mutation_strength)
+                        new_genome.style_params[param] = max(0.0, min(1.0, current_value * (1 + change)))
                 elif param == 'risk_tolerance':
-                    current_value = new_genome.style_params[param]
-                    change = random.uniform(-mutation_strength, mutation_strength)
-                    new_genome.style_params[param] = max(0.0, min(1.0, current_value * (1 + change)))
+                    # 30% chance for complete personality flip
+                    if random.random() < 0.3:
+                        new_genome.style_params[param] = random.uniform(0.0, 1.0)
+                    else:
+                        current_value = new_genome.style_params[param]
+                        change = random.uniform(-mutation_strength, mutation_strength)
+                        new_genome.style_params[param] = max(0.0, min(1.0, current_value * (1 + change)))
+
+        # NEW: Add completely new radical mutations
+
+        # Radical mutation: Swap two piece values (create unconventional valuations)
+        if random.random() < radical_mutation_chance:
+            pieces = ['pawn', 'knight', 'bishop', 'rook', 'queen']
+            piece1, piece2 = random.sample(pieces, 2)
+            # Swap but keep some sanity (don't make pawns worth more than queens)
+            if (piece1 == 'pawn' and piece2 == 'queen') or (piece1 == 'queen' and piece2 == 'pawn'):
+                pass  # Skip this swap
+            else:
+                new_genome.piece_values[piece1], new_genome.piece_values[piece2] = \
+                    new_genome.piece_values[piece2], new_genome.piece_values[piece1]
+
+        # Radical mutation: Invert a playing style (aggressive becomes defensive, etc.)
+        if random.random() < radical_mutation_chance:
+            if random.random() < 0.5:
+                # Flip aggressive/safety factors
+                new_genome.search_params['aggressive_factor'], new_genome.search_params['safety_factor'] = \
+                    new_genome.search_params['safety_factor'], new_genome.search_params['aggressive_factor']
+            else:
+                # Flip risk tolerance
+                new_genome.style_params['risk_tolerance'] = 1.0 - new_genome.style_params['risk_tolerance']
+
+        # Radical mutation: Completely randomize all randomness parameters
+        if random.random() < radical_mutation_chance * 0.5:
+            new_genome.style_params['randomness_opening'] = random.uniform(0.0, 0.5)
+            new_genome.style_params['randomness_middlegame'] = random.uniform(0.0, 0.3)
+            new_genome.style_params['randomness_endgame'] = random.uniform(0.0, 0.2)
+
+        # Radical mutation: Create "specialist" by boosting one evaluation aspect dramatically
+        if random.random() < radical_mutation_chance * 0.7:
+            specialist_params = ['king_safety_weight', 'pawn_structure_weight', 'piece_activity_weight',
+                               'center_control_weight']
+            chosen_specialty = random.choice(specialist_params)
+            new_genome.eval_weights[chosen_specialty] *= random.uniform(2.0, 4.0)
+            # Reduce others slightly to maintain balance
+            for param in specialist_params:
+                if param != chosen_specialty:
+                    new_genome.eval_weights[param] *= random.uniform(0.5, 0.8)
 
         return new_genome
 
     def crossover(self, other_genome):
-        """Create offspring by combining this genome with another"""
+        """Create offspring by combining this genome with another - DRAMATIC crossover"""
         child1 = copy.deepcopy(self)
         child2 = copy.deepcopy(other_genome)
 
-        # Mix piece values
+        # DRAMATIC crossover: Higher mixing rate and more aggressive combinations
+        mixing_rate = 0.7  # Much higher than standard 0.5
+
+        # Mix piece values with dramatic blending
         for piece in child1.piece_values:
-            if random.random() < 0.5:
-                child1.piece_values[piece], child2.piece_values[piece] = \
-                    child2.piece_values[piece], child1.piece_values[piece]
+            if random.random() < mixing_rate:
+                if random.random() < 0.3:
+                    # Create hybrid values (average with some variation)
+                    avg_value = (child1.piece_values[piece] + child2.piece_values[piece]) // 2
+                    variation = random.uniform(0.8, 1.2)
+                    child1.piece_values[piece] = int(avg_value * variation)
+                    child2.piece_values[piece] = int(avg_value * (2 - variation))
+                else:
+                    # Standard swap
+                    child1.piece_values[piece], child2.piece_values[piece] = \
+                        child2.piece_values[piece], child1.piece_values[piece]
 
-        # Mix evaluation weights
+        # DRAMATIC evaluation weight mixing
         for param in child1.eval_weights:
-            if random.random() < 0.5:
-                child1.eval_weights[param], child2.eval_weights[param] = \
-                    child2.eval_weights[param], child1.eval_weights[param]
+            if random.random() < mixing_rate:
+                if random.random() < 0.4:
+                    # Create hybrid values with dramatic variation
+                    avg_value = (child1.eval_weights[param] + child2.eval_weights[param]) / 2
+                    variation = random.uniform(0.6, 1.4)
+                    child1.eval_weights[param] = max(0.01, avg_value * variation)
+                    child2.eval_weights[param] = max(0.01, avg_value * (2 - variation))
+                else:
+                    # Standard swap
+                    child1.eval_weights[param], child2.eval_weights[param] = \
+                        child2.eval_weights[param], child1.eval_weights[param]
 
-        # Mix other parameters
+        # DRAMATIC search parameter mixing
         for param in child1.search_params:
-            if random.random() < 0.5:
-                child1.search_params[param], child2.search_params[param] = \
-                    child2.search_params[param], child1.search_params[param]
+            if random.random() < mixing_rate:
+                if param == 'base_depth':
+                    # For depth, choose randomly or average
+                    if random.random() < 0.5:
+                        child1.search_params[param], child2.search_params[param] = \
+                            child2.search_params[param], child1.search_params[param]
+                    else:
+                        # Average depth (rounded)
+                        avg_depth = (child1.search_params[param] + child2.search_params[param]) / 2
+                        child1.search_params[param] = max(2, min(6, int(avg_depth + random.choice([-1, 0, 1]))))
+                        child2.search_params[param] = max(2, min(6, int(avg_depth + random.choice([-1, 0, 1]))))
+                elif param == 'quiescence_depth':
+                    # Similar for quiescence depth
+                    if random.random() < 0.5:
+                        child1.search_params[param], child2.search_params[param] = \
+                            child2.search_params[param], child1.search_params[param]
+                    else:
+                        avg_qd = (child1.search_params[param] + child2.search_params[param]) / 2
+                        child1.search_params[param] = max(3, min(20, int(avg_qd * random.uniform(0.8, 1.2))))
+                        child2.search_params[param] = max(3, min(20, int(avg_qd * random.uniform(0.8, 1.2))))
+                else:
+                    # For other search params, create hybrid values
+                    if random.random() < 0.3:
+                        avg_value = (child1.search_params[param] + child2.search_params[param]) / 2
+                        variation = random.uniform(0.7, 1.3)
+                        child1.search_params[param] = max(0.1, min(3.0, avg_value * variation))
+                        child2.search_params[param] = max(0.1, min(3.0, avg_value * (2 - variation)))
+                    else:
+                        child1.search_params[param], child2.search_params[param] = \
+                            child2.search_params[param], child1.search_params[param]
 
+        # DRAMATIC style parameter mixing (personality blending)
         for param in child1.style_params:
-            if random.random() < 0.5:
-                child1.style_params[param], child2.style_params[param] = \
-                    child2.style_params[param], child1.style_params[param]
+            if random.random() < mixing_rate * 1.1:  # Even higher chance for personality mixing
+                if random.random() < 0.4:
+                    # Create personality blends
+                    avg_value = (child1.style_params[param] + child2.style_params[param]) / 2
+                    variation = random.uniform(0.6, 1.4)
+                    child1.style_params[param] = max(0.0, min(1.0, avg_value * variation))
+                    child2.style_params[param] = max(0.0, min(1.0, avg_value * (2 - variation)))
+                else:
+                    # Standard swap
+                    child1.style_params[param], child2.style_params[param] = \
+                        child2.style_params[param], child1.style_params[param]
+
+        # NEW: Add dramatic crossover-specific mutations
+
+        # 20% chance to create "extreme hybrid" - take the most extreme values from both parents
+        if random.random() < 0.2:
+            for param in child1.eval_weights:
+                parent_values = [self.eval_weights[param], other_genome.eval_weights[param]]
+                if max(parent_values) / min(parent_values) > 2.0:  # If parents differ significantly
+                    # Give children the extreme values
+                    child1.eval_weights[param] = max(parent_values) * random.uniform(1.0, 1.5)
+                    child2.eval_weights[param] = min(parent_values) * random.uniform(0.5, 1.0)
+
+        # 15% chance for "personality fusion" - completely blend all style parameters
+        if random.random() < 0.15:
+            for param in child1.style_params:
+                fusion_value = (self.style_params[param] + other_genome.style_params[param]) / 2
+                noise1 = random.uniform(-0.2, 0.2)
+                noise2 = random.uniform(-0.2, 0.2)
+                child1.style_params[param] = max(0.0, min(1.0, fusion_value + noise1))
+                child2.style_params[param] = max(0.0, min(1.0, fusion_value + noise2))
 
         return child1, child2
 
@@ -278,13 +456,14 @@ class EvolutionaryTrainer:
         base_genome = BotGenome()
         self.population.append(base_genome)
 
-        # Create mutated versions
+        # Create DRAMATICALLY mutated versions for initial diversity
         for i in range(1, self.population_size):
-            mutated = base_genome.mutate(mutation_rate=0.3, mutation_strength=0.3)
+            # Use very high mutation rates for initial population to create diverse starting bots
+            mutated = base_genome.mutate(mutation_rate=0.8, mutation_strength=0.8)
             mutated.generation = 0
             self.population.append(mutated)
 
-        print(f"Created {len(self.population)} bots for generation 0")
+        print(f"Created {len(self.population)} DRAMATICALLY different bots for generation 0")
 
     def play_game(self, bot1, bot2, game_id):
         """Play a game between two bots"""
@@ -402,9 +581,9 @@ class EvolutionaryTrainer:
                 child1 = parent1.mutate()
                 child2 = parent1.mutate()
 
-            # Mutate children
-            child1 = child1.mutate(mutation_rate=0.1, mutation_strength=0.1)
-            child2 = child2.mutate(mutation_rate=0.1, mutation_strength=0.1)
+            # DRAMATICALLY mutate children (increased rates for more evolution pressure)
+            child1 = child1.mutate(mutation_rate=0.3, mutation_strength=0.4)
+            child2 = child2.mutate(mutation_rate=0.3, mutation_strength=0.4)
 
             # Set generation info
             for child in [child1, child2]:
