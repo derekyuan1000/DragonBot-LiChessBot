@@ -706,7 +706,7 @@ def main():
     trainer = EvolutionaryTrainer(population_size=16, games_per_generation=80)
 
     # Run evolution with more generations for better results
-    champion = trainer.run_evolution(max_generations=1)
+    champion = trainer.run_evolution(max_generations=4)
 
     print("\nEvolution completed!")
     print("The champion bot has been saved to 'self_learning/evolution_champions/'")
