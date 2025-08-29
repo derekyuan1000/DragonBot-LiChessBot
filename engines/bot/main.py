@@ -8,7 +8,7 @@ from .minimax import minimax, order_moves
 
 def get_move(board, depth=4, time_limit=None):
     """
-    Get the best move using iterative deepening search
+    Get the best move using iterative deepening search (logs uniformly for diagnostics)
     """
     # First check if we have any legal moves
     legal_moves = list(board.legal_moves)
@@ -18,7 +18,7 @@ def get_move(board, depth=4, time_limit=None):
     opening_move = play_opening(board)
 
     if opening_move and opening_move in legal_moves:
-        print("PLAYING OPENING MOVE: ", opening_move)
+        print(f"ENGINE ({'White' if board.turn == chess.WHITE else 'Black'}) opening move: {opening_move.uci()}")
         return opening_move
 
     # Use iterative deepening for better time management and move ordering
@@ -34,7 +34,7 @@ def get_move(board, depth=4, time_limit=None):
             move, eval_score = search_best_move(board, current_depth)
             if move and move in legal_moves:
                 best_move = move
-                print(f"Depth {current_depth}: Best move {best_move} with eval {eval_score}")
+                print(f"ENGINE ({'White' if board.turn == chess.WHITE else 'Black'}) depth {current_depth}: {best_move.uci()} eval {eval_score}")
         except Exception as e:
             print(f"Error in search at depth {current_depth}: {e}")
             break
@@ -43,7 +43,7 @@ def get_move(board, depth=4, time_limit=None):
         # Fallback: just pick the first legal move
         best_move = legal_moves[0]
 
-    print("CHOSEN MOVE: ", best_move)
+    print(f"ENGINE ({'White' if board.turn == chess.WHITE else 'Black'}) chosen move: {best_move.uci()}")
     return best_move
 
 
