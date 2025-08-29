@@ -441,13 +441,28 @@ class EvolutionaryTrainer:
         with open(filename, 'w') as f:
             json.dump(population_data, f, indent=2)
 
-        # Save champion
-        if self.best_ever_genome:
-            champion_file = f"evolution_champions/champion_gen_{self.generation:03d}.json"
-            with open(champion_file, 'w') as f:
+        # Save champion - always save the best from current generation
+        # Sort population by fitness and get the best
+        best_current_gen = max(self.population, key=lambda g: g.fitness)
+
+        # Update best_ever_genome if this is better
+        if self.best_ever_genome is None or best_current_gen.fitness > self.best_ever_fitness:
+            self.best_ever_genome = copy.deepcopy(best_current_gen)
+            self.best_ever_fitness = best_current_gen.fitness
+
+        # Always save the best genome from current generation
+        champion_file = f"evolution_champions/champion_gen_{self.generation:03d}.json"
+        with open(champion_file, 'w') as f:
+            json.dump(best_current_gen.to_dict(), f, indent=2)
+
+        # Also save the all-time best if different
+        if self.best_ever_genome != best_current_gen:
+            best_ever_file = f"evolution_champions/best_ever_gen_{self.generation:03d}.json"
+            with open(best_ever_file, 'w') as f:
                 json.dump(self.best_ever_genome.to_dict(), f, indent=2)
 
         print(f"Generation data saved to {filename}")
+        print(f"Champion saved with fitness: {best_current_gen.fitness:.3f}")
 
     def run_evolution(self, max_generations=10):
         """Run the complete evolutionary process"""
@@ -505,8 +520,8 @@ def main():
     # Create trainer
     trainer = EvolutionaryTrainer(population_size=16, games_per_generation=80)
 
-    # Run evolution
-    champion = trainer.run_evolution(max_generations=5)
+    # Run evolution with more generations for better results
+    champion = trainer.run_evolution(max_generations=1)
 
     print("\nEvolution completed!")
     print("The champion bot has been saved to 'evolution_champions/'")

@@ -4,11 +4,11 @@ import chess
 rook_positions = {}
 
 def get_material(board):
-    # Weights
+    # Evolved piece values from champion bot
     pawn_weight = 100
     knight_weight = 310
     bishop_weight = 330
-    rook_weight = 500
+    rook_weight = 513  # Evolved from 500 -> 513
     queen_weight = 900
     king_weight = 20000
 

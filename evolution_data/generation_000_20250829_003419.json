@@ -1,0 +1,680 @@
+{
+  "generation": 0,
+  "population_size": 16,
+  "best_fitness": 0.5652173913043478,
+  "average_fitness": 0.49673730914077024,
+  "genomes": [
+    {
+      "piece_values": {
+        "pawn": 100,
+        "knight": 310,
+        "bishop": 330,
+        "rook": 500,
+        "queen": 900,
+        "king": 20000
+      },
+      "eval_weights": {
+        "material_weight": 1.0,
+        "position_weight": 0.3,
+        "king_safety_weight": 0.8,
+        "pawn_structure_weight": 0.4,
+        "piece_activity_weight": 0.6,
+        "center_control_weight": 0.5,
+        "development_bonus": 10,
+        "castling_bonus": 20,
+        "doubled_pawn_penalty": 20,
+        "isolated_pawn_penalty": 15,
+        "rook_open_file_bonus": 35
+      },
+      "search_params": {
+        "base_depth": 4,
+        "quiescence_depth": 10,
+        "aggressive_factor": 1.0,
+        "safety_factor": 1.0
+      },
+      "style_params": {
+        "randomness_opening": 0.1,
+        "randomness_middlegame": 0.05,
+        "randomness_endgame": 0.02,
+        "risk_tolerance": 0.5
+      },
+      "fitness": 0.4444444444444444,
+      "games_played": 18,
+      "wins": 8,
+      "draws": 0,
+      "losses": 10,
+      "generation": 0,
+      "parent_ids": []
+    },
+    {
+      "piece_values": {
+        "pawn": 100,
+        "knight": 353,
+        "bishop": 330,
+        "rook": 500,
+        "queen": 900,
+        "king": 20000
+      },
+      "eval_weights": {
+        "material_weight": 1.110568541984133,
+        "position_weight": 0.3,
+        "king_safety_weight": 0.8,
+        "pawn_structure_weight": 0.4345620412323847,
+        "piece_activity_weight": 0.47726316399286167,
+        "center_control_weight": 0.6188999814591272,
+        "development_bonus": 10,
+        "castling_bonus": 20.937297984687504,
+        "doubled_pawn_penalty": 20,
+        "isolated_pawn_penalty": 15,
+        "rook_open_file_bonus": 35
+      },
+      "search_params": {
+        "base_depth": 4,
+        "quiescence_depth": 10,
+        "aggressive_factor": 1.0,
+        "safety_factor": 1.0
+      },
+      "style_params": {
+        "randomness_opening": 0.1,
+        "randomness_middlegame": 0.04643057708065223,
+        "randomness_endgame": 0.02,
+        "risk_tolerance": 0.5
+      },
+      "fitness": 0.5238095238095238,
+      "games_played": 21,
+      "wins": 11,
+      "draws": 0,
+      "losses": 10,
+      "generation": 0,
+      "parent_ids": []
+    },
+    {
+      "piece_values": {
+        "pawn": 100,
+        "knight": 275,
+        "bishop": 330,
+        "rook": 500,
+        "queen": 900,
+        "king": 20000
+      },
+      "eval_weights": {
+        "material_weight": 1.0998969741635711,
+        "position_weight": 0.3,
+        "king_safety_weight": 0.6973364289675752,
+        "pawn_structure_weight": 0.4,
+        "piece_activity_weight": 0.6,
+        "center_control_weight": 0.4877501799315152,
+        "development_bonus": 10,
+        "castling_bonus": 20,
+        "doubled_pawn_penalty": 20,
+        "isolated_pawn_penalty": 18.031596812964466,
+        "rook_open_file_bonus": 35
+      },
+      "search_params": {
+        "base_depth": 4,
+        "quiescence_depth": 10,
+        "aggressive_factor": 1.0,
+        "safety_factor": 1.0
+      },
+      "style_params": {
+        "randomness_opening": 0.10498293296541197,
+        "randomness_middlegame": 0.05989089545467448,
+        "randomness_endgame": 0.02,
+        "risk_tolerance": 0.5
+      },
+      "fitness": 0.4444444444444444,
+      "games_played": 18,
+      "wins": 8,
+      "draws": 0,
+      "losses": 10,
+      "generation": 0,
+      "parent_ids": []
+    },
+    {
+      "piece_values": {
+        "pawn": 100,
+        "knight": 310,
+        "bishop": 330,
+        "rook": 500,
+        "queen": 965,
+        "king": 20000
+      },
+      "eval_weights": {
+        "material_weight": 1.0,
+        "position_weight": 0.3,
+        "king_safety_weight": 0.9314939784625571,
+        "pawn_structure_weight": 0.4,
+        "piece_activity_weight": 0.6,
+        "center_control_weight": 0.5,
+        "development_bonus": 10.340939611221058,
+        "castling_bonus": 20,
+        "doubled_pawn_penalty": 20,
+        "isolated_pawn_penalty": 15,
+        "rook_open_file_bonus": 35
+      },
+      "search_params": {
+        "base_depth": 4,
+        "quiescence_depth": 10,
+        "aggressive_factor": 0.8456898101847994,
+        "safety_factor": 0.779782230995347
+      },
+      "style_params": {
+        "randomness_opening": 0.11586330944138755,
+        "randomness_middlegame": 0.05,
+        "randomness_endgame": 0.018690318575586628,
+        "risk_tolerance": 0.5
+      },
+      "fitness": 0.5454545454545454,
+      "games_played": 22,
+      "wins": 12,
+      "draws": 0,
+      "losses": 10,
+      "generation": 0,
+      "parent_ids": []
+    },
+    {
+      "piece_values": {
+        "pawn": 109,
+        "knight": 310,
+        "bishop": 330,
+        "rook": 500,
+        "queen": 900,
+        "king": 20000
+      },
+      "eval_weights": {
+        "material_weight": 1.0,
+        "position_weight": 0.3136359820137809,
+        "king_safety_weight": 0.6588288008789054,
+        "pawn_structure_weight": 0.4,
+        "piece_activity_weight": 0.6,
+        "center_control_weight": 0.5,
+        "development_bonus": 10,
+        "castling_bonus": 20,
+        "doubled_pawn_penalty": 20,
+        "isolated_pawn_penalty": 15,
+        "rook_open_file_bonus": 39.1938228216731
+      },
+      "search_params": {
+        "base_depth": 5,
+        "quiescence_depth": 10,
+        "aggressive_factor": 1.0,
+        "safety_factor": 1.0
+      },
+      "style_params": {
+        "randomness_opening": 0.09723158608256297,
+        "randomness_middlegame": 0.05,
+        "randomness_endgame": 0.022120347112451616,
+        "risk_tolerance": 0.5
+      },
+      "fitness": 0.5238095238095238,
+      "games_played": 21,
+      "wins": 11,
+      "draws": 0,
+      "losses": 10,
+      "generation": 0,
+      "parent_ids": []
+    },
+    {
+      "piece_values": {
+        "pawn": 80,
+        "knight": 310,
+        "bishop": 330,
+        "rook": 500,
+        "queen": 900,
+        "king": 20000
+      },
+      "eval_weights": {
+        "material_weight": 1.0,
+        "position_weight": 0.3,
+        "king_safety_weight": 0.6337543654819036,
+        "pawn_structure_weight": 0.4,
+        "piece_activity_weight": 0.6,
+        "center_control_weight": 0.5,
+        "development_bonus": 10,
+        "castling_bonus": 20,
+        "doubled_pawn_penalty": 20,
+        "isolated_pawn_penalty": 15,
+        "rook_open_file_bonus": 35
+      },
+      "search_params": {
+        "base_depth": 4,
+        "quiescence_depth": 10,
+        "aggressive_factor": 0.7905749222916488,
+        "safety_factor": 1.0
+      },
+      "style_params": {
+        "randomness_opening": 0.1,
+        "randomness_middlegame": 0.05,
+        "randomness_endgame": 0.021172985731525276,
+        "risk_tolerance": 0.5
+      },
+      "fitness": 0.4444444444444444,
+      "games_played": 18,
+      "wins": 8,
+      "draws": 0,
+      "losses": 10,
+      "generation": 0,
+      "parent_ids": []
+    },
+    {
+      "piece_values": {
+        "pawn": 100,
+        "knight": 310,
+        "bishop": 240,
+        "rook": 500,
+        "queen": 900,
+        "king": 20000
+      },
+      "eval_weights": {
+        "material_weight": 1.0,
+        "position_weight": 0.3,
+        "king_safety_weight": 0.8,
+        "pawn_structure_weight": 0.2906731434741632,
+        "piece_activity_weight": 0.6,
+        "center_control_weight": 0.5,
+        "development_bonus": 10,
+        "castling_bonus": 20,
+        "doubled_pawn_penalty": 20,
+        "isolated_pawn_penalty": 17.79968895049043,
+        "rook_open_file_bonus": 35
+      },
+      "search_params": {
+        "base_depth": 4,
+        "quiescence_depth": 10,
+        "aggressive_factor": 1.0522013432968327,
+        "safety_factor": 1.0
+      },
+      "style_params": {
+        "randomness_opening": 0.1,
+        "randomness_middlegame": 0.05,
+        "randomness_endgame": 0.018738123921993335,
+        "risk_tolerance": 0.5
+      },
+      "fitness": 0.4444444444444444,
+      "games_played": 18,
+      "wins": 8,
+      "draws": 0,
+      "losses": 10,
+      "generation": 0,
+      "parent_ids": []
+    },
+    {
+      "piece_values": {
+        "pawn": 100,
+        "knight": 310,
+        "bishop": 330,
+        "rook": 500,
+        "queen": 900,
+        "king": 20000
+      },
+      "eval_weights": {
+        "material_weight": 1.0,
+        "position_weight": 0.3,
+        "king_safety_weight": 0.8,
+        "pawn_structure_weight": 0.3896045322005237,
+        "piece_activity_weight": 0.5805804462392361,
+        "center_control_weight": 0.5,
+        "development_bonus": 10,
+        "castling_bonus": 20,
+        "doubled_pawn_penalty": 24.978218360525037,
+        "isolated_pawn_penalty": 15,
+        "rook_open_file_bonus": 35
+      },
+      "search_params": {
+        "base_depth": 4,
+        "quiescence_depth": 10,
+        "aggressive_factor": 1.0,
+        "safety_factor": 1.0
+      },
+      "style_params": {
+        "randomness_opening": 0.0725351896652545,
+        "randomness_middlegame": 0.05,
+        "randomness_endgame": 0.02,
+        "risk_tolerance": 0.5
+      },
+      "fitness": 0.5227272727272727,
+      "games_played": 22,
+      "wins": 11,
+      "draws": 1,
+      "losses": 10,
+      "generation": 0,
+      "parent_ids": []
+    },
+    {
+      "piece_values": {
+        "pawn": 100,
+        "knight": 323,
+        "bishop": 231,
+        "rook": 648,
+        "queen": 900,
+        "king": 20000
+      },
+      "eval_weights": {
+        "material_weight": 1.028538926381013,
+        "position_weight": 0.3,
+        "king_safety_weight": 0.8,
+        "pawn_structure_weight": 0.4,
+        "piece_activity_weight": 0.7671450203889597,
+        "center_control_weight": 0.5,
+        "development_bonus": 7.71946135721077,
+        "castling_bonus": 20,
+        "doubled_pawn_penalty": 20,
+        "isolated_pawn_penalty": 15,
+        "rook_open_file_bonus": 27.53625795615909
+      },
+      "search_params": {
+        "base_depth": 4,
+        "quiescence_depth": 10,
+        "aggressive_factor": 1.0,
+        "safety_factor": 1.0
+      },
+      "style_params": {
+        "randomness_opening": 0.11793788962745329,
+        "randomness_middlegame": 0.05935087843612157,
+        "randomness_endgame": 0.02,
+        "risk_tolerance": 0.5
+      },
+      "fitness": 0.47368421052631576,
+      "games_played": 19,
+      "wins": 9,
+      "draws": 0,
+      "losses": 10,
+      "generation": 0,
+      "parent_ids": []
+    },
+    {
+      "piece_values": {
+        "pawn": 78,
+        "knight": 310,
+        "bishop": 330,
+        "rook": 500,
+        "queen": 984,
+        "king": 20000
+      },
+      "eval_weights": {
+        "material_weight": 1.0,
+        "position_weight": 0.3,
+        "king_safety_weight": 0.8,
+        "pawn_structure_weight": 0.4,
+        "piece_activity_weight": 0.6,
+        "center_control_weight": 0.5,
+        "development_bonus": 10,
+        "castling_bonus": 20,
+        "doubled_pawn_penalty": 20,
+        "isolated_pawn_penalty": 17.93455604293587,
+        "rook_open_file_bonus": 35
+      },
+      "search_params": {
+        "base_depth": 4,
+        "quiescence_depth": 10,
+        "aggressive_factor": 1.0,
+        "safety_factor": 1.0
+      },
+      "style_params": {
+        "randomness_opening": 0.10612589776896404,
+        "randomness_middlegame": 0.05,
+        "randomness_endgame": 0.02,
+        "risk_tolerance": 0.6137010036962033
+      },
+      "fitness": 0.47368421052631576,
+      "games_played": 19,
+      "wins": 9,
+      "draws": 0,
+      "losses": 10,
+      "generation": 0,
+      "parent_ids": []
+    },
+    {
+      "piece_values": {
+        "pawn": 100,
+        "knight": 310,
+        "bishop": 330,
+        "rook": 500,
+        "queen": 900,
+        "king": 20000
+      },
+      "eval_weights": {
+        "material_weight": 1.0,
+        "position_weight": 0.33799015180611175,
+        "king_safety_weight": 0.8,
+        "pawn_structure_weight": 0.4068569021886706,
+        "piece_activity_weight": 0.6,
+        "center_control_weight": 0.5,
+        "development_bonus": 10,
+        "castling_bonus": 20,
+        "doubled_pawn_penalty": 20,
+        "isolated_pawn_penalty": 10.97162296092897,
+        "rook_open_file_bonus": 35
+      },
+      "search_params": {
+        "base_depth": 4,
+        "quiescence_depth": 10,
+        "aggressive_factor": 1.033867893337864,
+        "safety_factor": 1.2204145406009936
+      },
+      "style_params": {
+        "randomness_opening": 0.1,
+        "randomness_middlegame": 0.040117480017669384,
+        "randomness_endgame": 0.017619730503913873,
+        "risk_tolerance": 0.5
+      },
+      "fitness": 0.525,
+      "games_played": 20,
+      "wins": 10,
+      "draws": 1,
+      "losses": 9,
+      "generation": 0,
+      "parent_ids": []
+    },
+    {
+      "piece_values": {
+        "pawn": 100,
+        "knight": 235,
+        "bishop": 330,
+        "rook": 500,
+        "queen": 900,
+        "king": 20000
+      },
+      "eval_weights": {
+        "material_weight": 1.1384240408145467,
+        "position_weight": 0.3,
+        "king_safety_weight": 0.8,
+        "pawn_structure_weight": 0.4,
+        "piece_activity_weight": 0.6,
+        "center_control_weight": 0.5,
+        "development_bonus": 10,
+        "castling_bonus": 20.67617155435151,
+        "doubled_pawn_penalty": 20,
+        "isolated_pawn_penalty": 15,
+        "rook_open_file_bonus": 35
+      },
+      "search_params": {
+        "base_depth": 4,
+        "quiescence_depth": 10,
+        "aggressive_factor": 1.0,
+        "safety_factor": 1.0
+      },
+      "style_params": {
+        "randomness_opening": 0.1,
+        "randomness_middlegame": 0.05,
+        "randomness_endgame": 0.02,
+        "risk_tolerance": 0.5
+      },
+      "fitness": 0.5238095238095238,
+      "games_played": 21,
+      "wins": 11,
+      "draws": 0,
+      "losses": 10,
+      "generation": 0,
+      "parent_ids": []
+    },
+    {
+      "piece_values": {
+        "pawn": 89,
+        "knight": 268,
+        "bishop": 330,
+        "rook": 500,
+        "queen": 900,
+        "king": 20000
+      },
+      "eval_weights": {
+        "material_weight": 1.0,
+        "position_weight": 0.29782860799410615,
+        "king_safety_weight": 0.8,
+        "pawn_structure_weight": 0.4,
+        "piece_activity_weight": 0.6,
+        "center_control_weight": 0.5,
+        "development_bonus": 12.653473045574184,
+        "castling_bonus": 15.319286884626377,
+        "doubled_pawn_penalty": 20,
+        "isolated_pawn_penalty": 15,
+        "rook_open_file_bonus": 35.02501247111829
+      },
+      "search_params": {
+        "base_depth": 4,
+        "quiescence_depth": 10,
+        "aggressive_factor": 0.9309680927601114,
+        "safety_factor": 1.0
+      },
+      "style_params": {
+        "randomness_opening": 0.1,
+        "randomness_middlegame": 0.050473615097983204,
+        "randomness_endgame": 0.025044402114879835,
+        "risk_tolerance": 0.5
+      },
+      "fitness": 0.47368421052631576,
+      "games_played": 19,
+      "wins": 9,
+      "draws": 0,
+      "losses": 10,
+      "generation": 0,
+      "parent_ids": []
+    },
+    {
+      "piece_values": {
+        "pawn": 100,
+        "knight": 310,
+        "bishop": 353,
+        "rook": 500,
+        "queen": 900,
+        "king": 20000
+      },
+      "eval_weights": {
+        "material_weight": 1.0,
+        "position_weight": 0.3134535406671745,
+        "king_safety_weight": 0.8,
+        "pawn_structure_weight": 0.4,
+        "piece_activity_weight": 0.4895837353048148,
+        "center_control_weight": 0.5,
+        "development_bonus": 10,
+        "castling_bonus": 25.455457502201348,
+        "doubled_pawn_penalty": 20,
+        "isolated_pawn_penalty": 15,
+        "rook_open_file_bonus": 35
+      },
+      "search_params": {
+        "base_depth": 4,
+        "quiescence_depth": 10,
+        "aggressive_factor": 0.7569965812470276,
+        "safety_factor": 1.0
+      },
+      "style_params": {
+        "randomness_opening": 0.08950839690805748,
+        "randomness_middlegame": 0.05,
+        "randomness_endgame": 0.018002841780467394,
+        "risk_tolerance": 0.5
+      },
+      "fitness": 0.5454545454545454,
+      "games_played": 22,
+      "wins": 12,
+      "draws": 0,
+      "losses": 10,
+      "generation": 0,
+      "parent_ids": []
+    },
+    {
+      "piece_values": {
+        "pawn": 100,
+        "knight": 247,
+        "bishop": 349,
+        "rook": 500,
+        "queen": 900,
+        "king": 20000
+      },
+      "eval_weights": {
+        "material_weight": 1.1020031076030983,
+        "position_weight": 0.3,
+        "king_safety_weight": 0.8,
+        "pawn_structure_weight": 0.5062735171275513,
+        "piece_activity_weight": 0.6,
+        "center_control_weight": 0.5,
+        "development_bonus": 10,
+        "castling_bonus": 20.012799081951798,
+        "doubled_pawn_penalty": 20,
+        "isolated_pawn_penalty": 15,
+        "rook_open_file_bonus": 35
+      },
+      "search_params": {
+        "base_depth": 3,
+        "quiescence_depth": 10,
+        "aggressive_factor": 1.0,
+        "safety_factor": 1.0270132621829502
+      },
+      "style_params": {
+        "randomness_opening": 0.1,
+        "randomness_middlegame": 0.05,
+        "randomness_endgame": 0.02,
+        "risk_tolerance": 0.5
+      },
+      "fitness": 0.47368421052631576,
+      "games_played": 19,
+      "wins": 9,
+      "draws": 0,
+      "losses": 10,
+      "generation": 0,
+      "parent_ids": []
+    },
+    {
+      "piece_values": {
+        "pawn": 100,
+        "knight": 310,
+        "bishop": 330,
+        "rook": 513,
+        "queen": 900,
+        "king": 20000
+      },
+      "eval_weights": {
+        "material_weight": 0.9097338598808318,
+        "position_weight": 0.3,
+        "king_safety_weight": 0.8,
+        "pawn_structure_weight": 0.4,
+        "piece_activity_weight": 0.6,
+        "center_control_weight": 0.5,
+        "development_bonus": 10,
+        "castling_bonus": 25.11233112577063,
+        "doubled_pawn_penalty": 20,
+        "isolated_pawn_penalty": 10.80904763023034,
+        "rook_open_file_bonus": 35
+      },
+      "search_params": {
+        "base_depth": 4,
+        "quiescence_depth": 10,
+        "aggressive_factor": 1.0,
+        "safety_factor": 1.0
+      },
+      "style_params": {
+        "randomness_opening": 0.1,
+        "randomness_middlegame": 0.045984035085217256,
+        "randomness_endgame": 0.02,
+        "risk_tolerance": 0.5
+      },
+      "fitness": 0.5652173913043478,
+      "games_played": 23,
+      "wins": 13,
+      "draws": 0,
+      "losses": 10,
+      "generation": 0,
+      "parent_ids": []
+    }
+  ]
+}
