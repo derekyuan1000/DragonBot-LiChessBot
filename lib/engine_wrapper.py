@@ -12,7 +12,6 @@ import datetime
 import time
 import random
 import math
-import test_bot.lichess
 from collections import Counter
 from collections.abc import Callable
 from lib import model, lichess
@@ -24,7 +23,7 @@ from lib.types import (ReadableType, ChessDBMoveType, LichessEGTBMoveType, OPTIO
 from extra_game_handlers import game_specific_options
 from typing import Any, Optional, Union, Literal, Type, cast
 from types import TracebackType
-LICHESS_TYPE = Union[lichess.Lichess, test_bot.lichess.Lichess]
+LICHESS_TYPE = lichess.Lichess
 
 
 logger = logging.getLogger(__name__)
@@ -645,12 +644,8 @@ def getHomemadeEngine(name: str) -> type[MinimalEngine]:
     :return: The engine with this name.
     """
     import homemade
-    from test_bot import homemade as test_homemade
     engine: type[MinimalEngine]
-    if name.endswith(test_suffix):  # Test only.
-        engine = getattr(test_homemade, name.removesuffix(test_suffix))
-    else:
-        engine = getattr(homemade, name)
+    engine = getattr(homemade, name)
     return engine
 
 
