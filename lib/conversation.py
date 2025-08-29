@@ -1,6 +1,12 @@
 """Allows lichess-bot to send messages to the chat."""
 import logging
-import test_bot.lichess
+# Optional import: test_bot is only needed for tests.
+try:
+    import test_bot.lichess as test_lichess  # type: ignore
+except ImportError:  # pragma: no cover
+    class _DummyTestBotLichess:  # minimal stub
+        pass
+    test_lichess = type("_dummy_module", (), {"Lichess": _DummyTestBotLichess})()
 from lib import model
 from lib.engine_wrapper import EngineWrapper
 from lib import lichess
@@ -9,7 +15,7 @@ from collections.abc import Sequence
 from lib.timer import seconds
 from typing import Union
 MULTIPROCESSING_LIST_TYPE = Sequence[model.Challenge]
-LICHESS_TYPE = Union[lichess.Lichess, test_bot.lichess.Lichess]
+LICHESS_TYPE = Union[lichess.Lichess, test_lichess.Lichess]
 
 logger = logging.getLogger(__name__)
 

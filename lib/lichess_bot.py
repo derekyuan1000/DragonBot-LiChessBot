@@ -23,7 +23,13 @@ import itertools
 import glob
 import platform
 import importlib.metadata
-import test_bot.lichess
+# Optional test support import; safe if test_bot is removed.
+try:
+    import test_bot.lichess as test_lichess  # type: ignore
+except ImportError:  # pragma: no cover
+    class _DummyTestBotLichess:  # minimal stub for union typing
+        pass
+    test_lichess = type("_dummy_module", (), {"Lichess": _DummyTestBotLichess})()
 from lib.config import load_config, Configuration, log_config
 from lib.conversation import Conversation, ChatLine
 from lib.timer import Timer, seconds, msec, hours, to_seconds
@@ -39,7 +45,7 @@ from multiprocessing.pool import Pool
 from typing import Optional, Union, TypedDict, cast
 from types import FrameType
 MULTIPROCESSING_LIST_TYPE = MutableSequence[model.Challenge]
-LICHESS_TYPE = Union[lichess.Lichess, test_bot.lichess.Lichess]
+LICHESS_TYPE = Union[lichess.Lichess, test_lichess.Lichess]
 POOL_TYPE = Pool
 
 

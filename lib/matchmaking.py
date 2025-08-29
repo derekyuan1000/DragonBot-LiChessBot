@@ -2,7 +2,14 @@
 import random
 import logging
 import datetime
-import test_bot.lichess
+# Optional import: test_bot is only used for testing; allow absence at runtime.
+try:
+    import test_bot.lichess as test_lichess  # type: ignore
+except ImportError:  # pragma: no cover - only executed when test_bot folder removed
+    class _DummyTestBotLichess:  # Minimal stub for type compatibility
+        pass
+    test_lichess = type("_dummy_module", (), {"Lichess": _DummyTestBotLichess})()
+
 from lib import model
 from lib.timer import Timer, seconds, minutes, days, years
 from collections import defaultdict
@@ -13,7 +20,7 @@ from typing import Optional, Union
 from lib.types import UserProfileType, PerfType, EventType, FilterType
 MULTIPROCESSING_LIST_TYPE = Sequence[model.Challenge]
 DAILY_TIMERS_TYPE = list[Timer]
-LICHESS_TYPE = Union[lichess.Lichess, test_bot.lichess.Lichess]
+LICHESS_TYPE = Union[lichess.Lichess, test_lichess.Lichess]
 
 logger = logging.getLogger(__name__)
 
