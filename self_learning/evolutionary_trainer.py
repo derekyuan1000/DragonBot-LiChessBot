@@ -350,10 +350,9 @@ class EvolutionaryTrainer:
                 print(f"Ply {move_count:03d} | {side} played {move.uci()} | FEN: {board.fen()}")
             if board.is_checkmate():
                 return -1 if board.turn == chess.WHITE else 1
-            return 0
         except Exception as e:
             print(f"Error in game {game_id}: {e}")
-            return 0
+            return 0  # Count as draw
 
     def run_tournament(self):
         """Run a round-robin tournament between all bots"""

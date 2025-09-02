@@ -5,12 +5,12 @@ rook_positions = {}
 
 def get_material(board):
     # Evolved piece values from champion bot
-    pawn_weight = 100
+    pawn_weight = 89
     knight_weight = 310
     bishop_weight = 330
     rook_weight = 513  # Evolved from 500 -> 513
     queen_weight = 900
-    king_weight = 20000
+    king_weight = 100000000
 
     white_pawn_count = len(board.pieces(chess.PAWN, chess.WHITE))
     white_rook_count = len(board.pieces(chess.ROOK, chess.WHITE))
